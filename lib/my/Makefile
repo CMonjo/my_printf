@@ -38,7 +38,10 @@ SRC	=	my_compute_power_rec.c		\
 		my_getnbr.c			\
 		my_sort_int_array.c		\
 		my_showmem.c			\
-		my_showstr.c
+		my_showstr.c			\
+		disp_stdarg.c			\
+		sum_stdarg.c			\
+		my_putnbr_base.c
 
 OBJ	=	$(SRC:.c=.o)
 
