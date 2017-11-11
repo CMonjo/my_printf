@@ -10,12 +10,12 @@
 #include <unistd.h>
 #include "my.h"
 
-int my_putstr(char const *str)
+int my_putstr(char const *str, int *count)
 {
 	int var = 0;
 
 	while (str[var] != '\0') {
-		my_putchar(str[var]);
+		my_putchar(str[var], count);
 		var = var + 1;
 	}
 	return (0);

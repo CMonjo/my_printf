@@ -9,95 +9,74 @@
 #include <stdarg.h>
 #include "my.h"
 
+int specifier_uns(char *str, int i, va_list list, int *count)
+{
+	switch (str[i + 1]) {
+		case 'o':
+			uns_base(va_arg(list, unsigned int), 8, count);
+			break;
+		case 'x':
+			uns_base(va_arg(list, unsigned int), 16, count);
+			break;
+		case 'X':
+			uns_base_lock(va_arg(list, unsigned int), 16, count);
+			break;
+		case 'u':
+			uns_base(va_arg(list, unsigned int), 10, count);
+			break;
+		case 'p':
+			my_putstr("0x", count);
+			uns_base_long(va_arg(list, unsigned long), 16, count);
+			break;
+	}
+	return (0);
+}
+int specifier_simple(char *str, int i, va_list list, int *count)
+{
+	switch (str[i + 1]) {
+		case 'c':
+			my_putchar(va_arg(list, int), count);
+			break;
+		case 's':
+			my_putstr(va_arg(list, char *), count);
+			break;
+		case 'i':
+		case 'd':
+			my_put_nbr(va_arg(list, int), 10, count);
+			break;
+		case '%':
+			my_putchar('%', count);
+			break;
+		// case 'lu':
+		// 	uns_base_long(va_arg(list, unsigned long), 10);
+		// 	break;
+		// case 'ld':
+		// 	put_long(va_arg(list, long), 10);
+		// 	break;
+	}
+	return (0);
+}
+
 int my_printf(char *str, ...)
 {
 	va_list list;
 	int i = 0;
+	int count = 0;
 
 	va_start(list, str);
 	while (str[i] != '\0') {
 		if (str[i] == '%') {
-			//APPEL DES FONCTIONS
-			switch (str[i + 1]) {
-			case 'c':
-				my_putchar(va_arg(list, int));
-				break;
-			case 's':
-				my_putstr(va_arg(list, char *));
-				break;
-			case 'i':
-			case 'd':
-				my_put_nbr(va_arg(list, int));
-				break;
-			case 'o':
-				uns_base(va_arg(list, unsigned int), 8);
-				break;
-			case 'x':
-				uns_base(va_arg(list, unsigned int), 16);
-				break;
-			case 'X':
-				uns_base_lock(va_arg(list, unsigned int), 16);
-				break;
-			case 'u':
-				uns_base(va_arg(list, unsigned int), 10);
-				break;
-			case 'p':
-				my_putstr("0x");
-				uns_base_l(va_arg(list, unsigned long), 16);
-				break;
-			case '%':
-				my_putchar('%');
-				break;
+			if (str[i + 1] == '+' || str[i + 1] == '-' || str[i + 1] == ' ' || str[i + 1] == '#' || str[i + 1] == '.') {
+				printf("A envoyer dans la fonction flags\n");
+				i++;
 			}
-			//case 'lu' unsigned long
-			//cass 'ld' long
+			specifier_uns(str, i, list, &count);
+			specifier_simple(str, i, list, &count);
 			i++;
 		} else
-			my_putchar(str[i]);
+			my_putchar(str[i], &count);
 		i++;
 		va_end(list);
 	}
-	my_putchar('\n');
-	return (0);
-}
-
-int main()
-{
-	int i = 5;
-	long m = 123456789;
-	char *str = "azertyuiop";
-
-	printf("%.6d\n", 7);
-	printf("%zd\n", m);
-
-	my_printf("\n'p' = [%p]", &str[i]);
-	printf("printf = %p\n\n", &str[i]);
-
-	my_printf("'i' = [%i]", i);
-	printf("printf = %i\n\n", i);
-
-	my_printf("'d' = [%d]", 34);
-	printf("printf = %d\n\n", 34);
-
-	my_printf("'c' = [%c]", 'c');
-	printf("printf = %c\n\n", 'c');
-
-	my_printf("'s' = [%s]", "string");
-	printf("printf = %s\n\n", "string");
-
-	my_printf("'%%' = [%%]");
-	printf("printf = %%\n\n");
-
-	my_printf("'o' = %o", 987989);
-	printf("printf = %o\n\n", 987989);
-
-	my_printf("'x' = %x", 123456789);
-	printf("printf = %x\n\n", 123456789);
-
-	my_printf("'X' = %X", 987654321);
-	printf("printf = %X\n\n", 987654321);
-
-	my_printf("'u' = %u", 1357924680);
-	printf("printf = %u\n\n", 1357924680);
-	return (0);
+	return (count);
 }

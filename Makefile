@@ -9,29 +9,36 @@ CC	=	gcc
 
 CFLAGS	=	-W -Wall -Werror -Wextra -I include/
 
-LIB	=	-L lib/my -lmy
+LIB	=	-L. -lmy
 
 SRC 	=	my_printf.c	\
-		guess_base.c
+		guess_base.c	\
+		my_getnbr.c	\
+		my_putchar.c	\
+		my_put_nbr.c	\
+		my_putstr.c	\
+		my_revstr.c	\
+		my_strcpy.c	\
+		my_strlen.c	\
+		sum_stdarg.c
 
-OBJ 	=	$(SRC:.c=.o)
+OBJ	=	$(SRC:.c=.o)
 
-NAME	= 	my_printf
+NAME	=	libmy.a
 
-all : $(NAME)
+all:	$(NAME)
 
-$(NAME) : $(OBJ)
-	make -C ./lib/my/
-	$(CC) $(OBJ) $(CFLAGS) $(LIB) -o $(NAME)
+$(NAME): $(OBJ)
+	ar rc $(NAME) $(OBJ)
 	rm -f $(OBJ)
-	make clean -C ./lib/my/
 
-clean :
+main:
+	gcc print.c $(CFLAGS) $(LIB)
+
+clean:
 	rm -f $(OBJ)
-	make clean -C ./lib/my/
 
-fclean : clean
+fclean: clean
 	rm -f $(NAME)
-	make fclean -C ./lib/my/
 
 re : fclean all
