@@ -12,6 +12,8 @@ CFLAGS	=	-W -Wall -Werror -Wextra -I include/
 LIB	=	-L. -lmy
 
 SRC 	=	my_printf.c	\
+		flags.c		\
+		specifiers.c	\
 		guess_base.c	\
 		my_getnbr.c	\
 		my_putchar.c	\
@@ -20,6 +22,7 @@ SRC 	=	my_printf.c	\
 		my_revstr.c	\
 		my_strcpy.c	\
 		my_strlen.c	\
+		my_strcpy.c	\
 		sum_stdarg.c
 
 OBJ	=	$(SRC:.c=.o)

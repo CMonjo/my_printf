@@ -13,47 +13,66 @@
 
 int main()
 {
-	int i = 5;
-	long m = 123456789;
-	char *str = "azertyuiop";
+	char str[5];
+	my_strcpy(str, "toto");
+	str[1] = 5;
+	unsigned long lu = 12345678997654;
+	long ld = 12345678997654;
+	int i = 1675;
+	char *ptr = "azertyuiop";
 
-	my_printf("\nmy : %d\n\n", my_printf("%d", 10));
-	printf("\nprintf : %d\n\n", printf("%d", 10));
+	// printf("5s = %5s\n\n", "hello world");
+	// printf(".5s = %.7s\n\n", "hello world");
+	// printf(".5d = %.5d\n\n", 123567);
+	// printf("espace print = %2d\n\n", 9);
+	//printf("%*d\n", 15);
+	// printf("%.6d\n\n", 7);
 
-	my_printf("%.5s\n\n", "1234567890");
-	printf("%.5s\n\n", "1234567890");
-	printf("%.6d\n\n", 7);
-	printf("%zd\n\n", m);
+	my_printf("\n'S' && 'LEN' my : %d\n", my_printf("%S", str));
+	printf("\nprintf : %d\n\n", printf("%d", 12340));
 
-	my_printf("\n'p' = [%p]", &str[i]);
-	printf("printf = %p\n\n", &str[i]);
+	//FAIRE UN (COUNT) POUR TOUS LES SPECIFIERS
 
-	my_printf("'i' = [%i]", i);
-	printf("printf = %i\n\n", i);
+	my_printf("'b' = %b\n\n", i);
 
-	my_printf("'d' = [%d]", 34);
-	printf("printf = %d\n\n", 34);
+	my_printf("'ld' = %ld\n", ld);
+	printf("printf = %ld\n\n", ld);
 
-	my_printf("'c' = [%c] %c", 'c', 65);
+	my_printf("'lu' = %lu\n", lu);
+	printf("printf = %lu\n\n", lu);
+
+	my_printf("'p' = %p\n", &ptr[i]);
+	printf("printf = %p\n\n", &ptr[i]);
+
+	my_printf("' ' 'i' = [% i]\n", i);
+	printf("printf = [% i]\n\n", i);
+
+	my_printf("'+' 'd' pos = %+d\n", 34);
+	printf("printf = %+d\n\n", 34);
+
+	my_printf("'+' 'd' neg = %+d\n", -34);
+	printf("printf = %+d\n\n", -34);
+
+	my_printf("'c' = %c\n", 'c');
 	printf("printf = %c\n\n", 'c');
 
-	my_printf("'s' = [%s]", "string");
+	my_printf("'s' = %s\n", "string");
 	printf("printf = %s\n\n", "string");
 
-	my_printf("'%%' = [%%]");
+	my_printf("'%%' = %%\n");
 	printf("printf = %%\n\n");
 
-	my_printf("'o' = %o", 987989);
-	printf("printf = %o\n\n", 987989);
+	my_printf("'#' 'o' = %#o\n", 987989);
+	printf("printf = %#o\n\n", 987989);
 
-	my_printf("'x' = %x", 123456789);
-	printf("printf = %x\n\n", 123456789);
+	my_printf("'#' 'x' = %#x\n", 123456789);
+	printf("printf = %#x\n\n", 123456789);
 
-	my_printf("'X' = %X", 987654321);
-	printf("printf = %X\n\n", 987654321);
+	my_printf("'#' 'X' = %#X\n", 987654321);
+	printf("printf = %#X\n\n", 987654321);
 
-	my_printf("'u' = %u", 1357924680);
+	my_printf("'u' = %u\n", 1357924680);
 	printf("printf = %u\n\n", 1357924680);
 
-	return (my_printf("%s", "string de test"));
+	return (0);
 }

@@ -9,51 +9,27 @@
 #include <stdarg.h>
 #include "my.h"
 
-int specifier_uns(char *str, int i, va_list list, int *count)
+int compare (char *str, int *i, va_list list, int *count)
 {
-	switch (str[i + 1]) {
-		case 'o':
-			uns_base(va_arg(list, unsigned int), 8, count);
-			break;
-		case 'x':
-			uns_base(va_arg(list, unsigned int), 16, count);
-			break;
-		case 'X':
-			uns_base_lock(va_arg(list, unsigned int), 16, count);
-			break;
-		case 'u':
-			uns_base(va_arg(list, unsigned int), 10, count);
-			break;
-		case 'p':
-			my_putstr("0x", count);
-			uns_base_long(va_arg(list, unsigned long), 16, count);
-			break;
+	if (str[(*i) + 1] == '+' || str[(*i) + 1] == '-' || str[(*i) + 1] == ' '
+	|| str[(*i) + 1] == '#' || str[(*i) + 1] == '0') {
+		flags(str, *i, count);
+		(*i)++;
 	}
-	return (0);
-}
-int specifier_simple(char *str, int i, va_list list, int *count)
-{
-	switch (str[i + 1]) {
-		case 'c':
-			my_putchar(va_arg(list, int), count);
-			break;
-		case 's':
-			my_putstr(va_arg(list, char *), count);
-			break;
-		case 'i':
-		case 'd':
-			my_put_nbr(va_arg(list, int), 10, count);
-			break;
-		case '%':
-			my_putchar('%', count);
-			break;
-		// case 'lu':
-		// 	uns_base_long(va_arg(list, unsigned long), 10);
-		// 	break;
-		// case 'ld':
-		// 	put_long(va_arg(list, long), 10);
-		// 	break;
+	if ((str[(*i) + 1] <= 48 && str[(*i) + 1] >= 57) ||
+	str[(*i) + 1] == '*') {
+		//width(str, *i, count); Pour les %number/type utiliser getnbr
+		(*i)++;
 	}
+	if (str[(*i) + 1] == '.' && str[(*i) + 2] <= 48 &&
+	str[(*i) + 2] >= 57) {
+		//precision(str, *i, count);
+		(*i)++;
+	}
+	specifier_uns(str, *i, list, count);
+	specifier_simple(str, *i, list, count);
+	specifier_long(str, i, list, count);
+	(*i)++;
 	return (0);
 }
 
@@ -66,13 +42,7 @@ int my_printf(char *str, ...)
 	va_start(list, str);
 	while (str[i] != '\0') {
 		if (str[i] == '%') {
-			if (str[i + 1] == '+' || str[i + 1] == '-' || str[i + 1] == ' ' || str[i + 1] == '#' || str[i + 1] == '.') {
-				printf("A envoyer dans la fonction flags\n");
-				i++;
-			}
-			specifier_uns(str, i, list, &count);
-			specifier_simple(str, i, list, &count);
-			i++;
+			compare(str, &i, list, &count);
 		} else
 			my_putchar(str[i], &count);
 		i++;
