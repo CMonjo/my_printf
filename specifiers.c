@@ -27,7 +27,7 @@ int specifier_uns(char *str, int i, va_list list, int *count)
 		case 'p':
 			my_putstr("0x", count);
 			uns_base_long(va_arg(list, unsigned long), 16, count);
-			break;<
+			break;
 	}
 	return (0);
 }
