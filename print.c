@@ -18,6 +18,7 @@ int main()
 	str[1] = 5;
 	unsigned long lu = 12345678997654;
 	long ld = 12345678997654;
+	long int li = 12345678997654;
 	int i = 1675;
 	char *ptr = "azertyuiop";
 
@@ -37,6 +38,9 @@ int main()
 
 	my_printf("'ld' = %ld\n", ld);
 	printf("printf = %ld\n\n", ld);
+
+	my_printf("'li' = %li\n", li);
+	printf("printf = %li\n\n", li);
 
 	my_printf("'lu' = %lu\n", lu);
 	printf("printf = %lu\n\n", lu);

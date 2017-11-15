@@ -27,7 +27,7 @@ int specifier_uns(char *str, int i, va_list list, int *count)
 		case 'p':
 			my_putstr("0x", count);
 			uns_base_long(va_arg(list, unsigned long), 16, count);
-			break;
+			break;<
 	}
 	return (0);
 }
@@ -54,25 +54,6 @@ int specifier_simple(char *str, int i, va_list list, int *count)
 		case 'b':
 			uns_base(va_arg(list, unsigned int), 2, count);
 			break;
-	}
-	return (0);
-}
-
-int specifier_long(char *str, int *i, va_list list, int *count)
-{
-	switch (str[(*i) + 1]) {
-		case 'l':
-			if (str[(*i) + 2] == 'd') {
-				(*i)++;
-				put_long(va_arg(list, long), 10, count);
-				break;
-			}
-			else if (str[(*i) + 2] == 'u') {
-				(*i)++;
-				uns_base_long(va_arg(list, unsigned long),
-				10, count);
-				break;
-			}
 	}
 	return (0);
 }

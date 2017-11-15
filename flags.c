@@ -14,6 +14,7 @@ int flags(char *str, int i, int *count)
 	switch (str[i + 1]) {
 		case '+':
 			my_putchar('+', count);
+			break;
 		case ' ':
 			my_putchar(' ', count);
 			break;
@@ -27,6 +28,7 @@ int flags(char *str, int i, int *count)
 				my_putstr("0x", count);
 			if (str[i + 2] == 'X')
 				my_putstr("0X", count);
+			break;
 	}
 	return (0);
 }

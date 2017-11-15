@@ -93,3 +93,19 @@ void no_printable(char *str, int *count)
 		i++;
 	}
 }
+
+void long_int(long int nbr, int base, int *count)
+{
+	char b[] = "0123456789abcdef";
+	char *digit = malloc(sizeof(char) * 50);
+	int i = 0;
+	long carry = 0;
+
+	while (nbr != 0) {
+		carry =  nbr % base;
+		nbr = nbr / base;
+		digit[i] = b[carry];
+		i++;
+	}
+	my_putstr(my_revstr(digit), count);
+}
