@@ -16,11 +16,23 @@ int main()
 	char str[5];
 	my_strcpy(str, "toto");
 	str[1] = 5;
-	unsigned long lu = 12345678997654;
-	long ld = 12345678997654;
-	long int li = 12345678997654;
-	int i = 1675;
+	unsigned long long int llu = 12345678997654;
+	unsigned long long int llo = 12345678997654;
+	unsigned long long int llx = 12345678997654;
+	unsigned long long int llX = 12345678997654;
+	unsigned long int lu = 12345678997654;
+	unsigned long int lo = 12345678997654;
+	unsigned long int lx = 12345678997654;
+	unsigned long int lX = 12345678997654;
+	long int ld = -12345678997654;
+	long int li = -12345678997654;
+	long long int lld = -12345678997654;
+	long long int lli = -12345678997654;
+	int i = -1675;
 	char *ptr = "azertyuiop";
+
+	printf("[% i]\n", 34);
+	printf("[% i]\n", -34);
 
 	// printf("5s = %5s\n\n", "hello world");
 	// printf(".5s = %.7s\n\n", "hello world");
@@ -44,6 +56,33 @@ int main()
 
 	my_printf("'lu' = %lu\n", lu);
 	printf("printf = %lu\n\n", lu);
+
+	my_printf("'lo' = %lo\n", lo);
+	printf("printf = %lo\n\n", lo);
+
+	my_printf("'lx' = %lx\n", lx);
+	printf("printf = %lx\n\n", lx);
+
+	my_printf("'lX' = %lX\n", lX);
+	printf("printf = %lX\n\n", lX);
+
+	my_printf("'lld' = %lld\n", lld);
+	printf("printf = %lld\n\n", lld);
+
+	my_printf("'lli' = %lli\n", lli);
+	printf("printf = %lli\n\n", lli);
+
+	my_printf("'llu' = %llu\n", llu);
+	printf("printf = %llu\n\n", llu);
+
+	my_printf("'llo' = %llo\n", llo);
+	printf("printf = %llo\n\n", llo);
+
+	my_printf("'llx' = %llx\n", llx);
+	printf("printf = %llx\n\n", llx);
+
+	my_printf("'lX' = %llX\n", llX);
+	printf("printf = %llX\n\n", llX);
 
 	my_printf("'p' = %p\n", &ptr[i]);
 	printf("printf = %p\n\n", &ptr[i]);
