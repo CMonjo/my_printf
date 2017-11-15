@@ -14,7 +14,8 @@ LIB	=	-L. -lmy
 SRC 	=	my_printf.c				\
 		flags/flags.c				\
 		specifiers/specifiers_defaults.c	\
-		specifiers/specifiers_length.c		\
+		specifiers/specifiers_length_l.c	\
+		specifiers/specifiers_length_h.c	\
 		put_base/guess_base.c			\
 		put_base/guess_base_2.c			\
 		lib/my_getnbr.c				\

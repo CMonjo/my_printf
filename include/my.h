@@ -22,6 +22,8 @@ char *my_revstr(char *str);
 int my_printf(char *str, ...);
 int my_specifiers(char *str, int *i, va_list list, int *count);
 int length_specifiers_l(char *str, int *i, va_list list, int *count);
+int specifier_long_l_2(char *str, int *i, va_list list, int *count);
+int specifier_long_ll_2(char *str, int *i, va_list list, int *count);
 int length_specifiers_h(char *str, int *i, va_list list, int *count);
 int flags(char *str, int i, int *count);
 
@@ -30,9 +32,12 @@ int flags(char *str, int i, int *count);
 int specifier_long_l(char *str, int *i, va_list list, int *count);
 int specifier_long_ll(char *str, int *i, va_list list, int *count);
 int specifier_h(char *str, int *i, va_list list, int *count);
+int specifier_h_2(char *str, int *i, va_list list, int *count);
 int specifier_simple(char *str, int i, va_list list, int *count);
 int specifier_uns(char *str, int i, va_list list, int *count);
+int specifier_uns_2(char *str, int i, va_list list, int *count);
 int specifier_hh(char *str, int *i, va_list list, int *count);
+int specifier_hh_2(char *str, int *i, va_list list, int *count);
 
 void uns_long(unsigned long long int nbr, int base, int *count);
 void int_long(long long int nbr, int base, int *count);

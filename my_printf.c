@@ -31,7 +31,6 @@ int my_specifiers(char *str, int *i, va_list list, int *count)
 		specifier_long_l(str, i, list, count);
 		return (0);
 	}
-	specifier_uns(str, *i, list, count);
 	specifier_simple(str, *i, list, count);
 	return (0);
 }
