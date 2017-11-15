@@ -9,11 +9,11 @@ CC	=	gcc
 
 CFLAGS	=	-Wall -Wextra -W -Werror -pedantic -I ../include/
 
-LIB	=	-L ../lib/my/ -lmy
+LIB	=	-L ../ -lmy
 
 CRIT	=	-lcriterion
 
-SRC	=	test_exemple.c
+SRC	=	criterion.c
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -22,17 +22,17 @@ NAME	=	criterion
 all: $(NAME)
 
 $(NAME): 	$(OBJ)
-	make -C ../lib/my/
+	make -C ../
 	$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(LIB) $(CRIT)
 	rm -f $(OBJ)
-	make clean -C ../lib/my/
+	make clean -C ../
 
 clean:
 	rm -f $(OBJ)
-	make clean -C ../lib/my/
+	make clean -C ../
 
 fclean: clean
 	rm -f $(NAME)
-	make fclean -C ../lib/my/
+	make fclean -C ../
 
 re: fclean all

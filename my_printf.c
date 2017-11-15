@@ -11,16 +11,16 @@
 
 int my_specifiers(char *str, int *i, va_list list, int *count)
 {
-	// if (str[(*i) + 1] == 'h') {
-	// 	(*i)++;
-	// 	if (str[(*i) + 1] == 'h') {
-	//		(*i)++;
-	// 		specifier_long_ll(str, i, list, count);
-	// 		return (0);
-	// 	}
-	// 	specifier_long_l(str, i, list, count);
-	// 	return (0);
-	// }
+	if (str[(*i) + 1] == 'h') {
+		(*i)++;
+		if (str[(*i) + 1] == 'h') {
+			(*i)++;
+			specifier_hh(str, i, list, count);
+			return (0);
+		}
+		specifier_h(str, i, list, count);
+		return (0);
+	}
 	if (str[(*i) + 1] == 'l') {
 		(*i)++;
 		if (str[(*i) + 1] == 'l') {
@@ -32,7 +32,6 @@ int my_specifiers(char *str, int *i, va_list list, int *count)
 		return (0);
 	}
 	specifier_uns(str, *i, list, count);
-	//ENVOUYER LE SPECIFIERS SIMPLE A PARTIR DE L'AUTRE FONCTION POYR LA NORME
 	specifier_simple(str, *i, list, count);
 	return (0);
 }
@@ -46,12 +45,10 @@ int compare(char *str, int *i, va_list list, int *count)
 	}
 	if ((str[(*i) + 1] <= 48 && str[(*i) + 1] >= 57) ||
 	str[(*i) + 1] == '*') {
-		//width(str, *i, count); Pour les %number/type utiliser getnbr
 		(*i)++;
 	}
 	if (str[(*i) + 1] == '.' && str[(*i) + 2] <= 48 &&
 	str[(*i) + 2] >= 57) {
-		//precision(str, *i, count);
 		(*i)++;
 	}
 	my_specifiers(str, i, list, count);

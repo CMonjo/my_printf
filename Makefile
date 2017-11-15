@@ -11,19 +11,18 @@ CFLAGS	=	-W -Wall -Werror -Wextra -I include/
 
 LIB	=	-L. -lmy
 
-SRC 	=	my_printf.c	\
-		flags.c		\
-		specifiers.c	\
-		guess_base.c	\
-		my_getnbr.c	\
-		my_putchar.c	\
-		my_put_nbr.c	\
-		my_putstr.c	\
-		my_revstr.c	\
-		my_strcpy.c	\
-		my_strlen.c	\
-		my_strcpy.c	\
-		sum_stdarg.c
+SRC 	=	my_printf.c				\
+		flags/flags.c				\
+		specifiers/specifiers_defaults.c	\
+		specifiers/specifiers_length.c		\
+		put_base/guess_base.c			\
+		put_base/guess_base_2.c			\
+		lib/my_getnbr.c				\
+		lib/my_putchar.c			\
+		lib/my_putstr.c				\
+		lib/my_revstr.c				\
+		lib/my_strcpy.c				\
+		lib/my_strlen.c
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -36,7 +35,7 @@ $(NAME): $(OBJ)
 	rm -f $(OBJ)
 
 main:
-	gcc print.c $(CFLAGS) $(LIB)
+	gcc tests/main_test.c $(CFLAGS) $(LIB)
 
 clean:
 	rm -f $(OBJ)
