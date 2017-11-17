@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2017
-** c
+** Putnbr
 ** File description:
-**
+** Lib put nbr
 */
 
 #include <unistd.h>

@@ -13,11 +13,16 @@ LIB	=	-L ../ -lmy
 
 CRIT	=	-lcriterion
 
-SRC	=	criterion.c
+SRC	=	criterion.c	\
+		criterion_2.c	\
+		criterion_3.c	\
+		criterion_4.c	\
+		criterion_5.c	\
+		criterion_6.c
 
 OBJ	=	$(SRC:.c=.o)
 
-NAME	=	criterion
+NAME	=	tests
 
 all: $(NAME)
 

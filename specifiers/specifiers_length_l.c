@@ -26,7 +26,6 @@ int specifier_long_l(char *str, int *i, va_list list, int *count)
 	return (0);
 }
 
-
 int specifier_long_l_2(char *str, int *i, va_list list, int *count)
 {
 	switch (str[(*i) + 1]) {

@@ -38,16 +38,16 @@ int my_specifiers(char *str, int *i, va_list list, int *count)
 int compare(char *str, int *i, va_list list, int *count)
 {
 	if (str[(*i) + 1] == '+' || str[(*i) + 1] == '-' || str[(*i) + 1] == ' '
-	|| str[(*i) + 1] == '#' || str[(*i) + 1] == '0') {
+	    || str[(*i) + 1] == '#' || str[(*i) + 1] == '0') {
 		flags(str, *i, count);
 		(*i)++;
 	}
 	if ((str[(*i) + 1] <= 48 && str[(*i) + 1] >= 57) ||
-	str[(*i) + 1] == '*') {
+	    str[(*i) + 1] == '*') {
 		(*i)++;
 	}
 	if (str[(*i) + 1] == '.' && str[(*i) + 2] <= 48 &&
-	str[(*i) + 2] >= 57) {
+	    str[(*i) + 2] >= 57) {
 		(*i)++;
 	}
 	my_specifiers(str, i, list, count);

@@ -18,6 +18,8 @@ void uns_long(unsigned long long int nbr, int base, int *count)
 	int i = 0;
 	long carry = 0;
 
+	if (digit == NULL)
+		exit (84);
 	while (nbr != 0) {
 		carry =  nbr % base;
 		nbr = nbr / base;
@@ -34,6 +36,8 @@ void int_long(long long int nbr, int base, int *count)
 	int i = 0;
 	long carry = 0;
 
+	if (digit == NULL)
+		exit (84);
 	if (nbr < 0) {
 		my_putchar('-', count);
 		nbr *= -1;
@@ -54,6 +58,8 @@ void uns_long_lock(unsigned long long int nbr, int base, int *count)
 	int i = 0;
 	long carry = 0;
 
+	if (digit == NULL)
+		exit (84);
 	while (nbr != 0) {
 		carry =  nbr % base;
 		nbr = nbr / base;
@@ -89,6 +95,8 @@ void short_int(short int nbr, int base, int *count)
 	int i = 0;
 	long carry = 0;
 
+	if (digit == NULL)
+		exit (84);
 	if (nbr < 0) {
 		my_putchar('-', count);
 		nbr *= -1;

@@ -18,6 +18,8 @@ void uns_short(unsigned short int nbr, int base, int *count)
 	int i = 0;
 	long carry = 0;
 
+	if (digit == NULL)
+		exit (84);
 	while (nbr != 0) {
 		carry =  nbr % base;
 		nbr = nbr / base;
@@ -34,6 +36,8 @@ void uns_short_lock(unsigned short int nbr, int base, int *count)
 	int i = 0;
 	long carry = 0;
 
+	if (digit == NULL)
+		exit (84);
 	while (nbr != 0) {
 		carry =  nbr % base;
 		nbr = nbr / base;
@@ -50,6 +54,8 @@ void sign_char(signed char nbr, int base, int *count)
 	int i = 0;
 	long carry = 0;
 
+	if (digit == NULL)
+		exit (84);
 	if (nbr < 0) {
 		my_putchar('-', count);
 		nbr *= -1;
@@ -70,6 +76,8 @@ void uns_char(unsigned char nbr, int base, int *count)
 	int i = 0;
 	long carry = 0;
 
+	if (digit == NULL)
+		exit (84);
 	while (nbr != 0) {
 		carry =  nbr % base;
 		nbr = nbr / base;
@@ -86,6 +94,8 @@ void uns_char_lock(unsigned char nbr, int base, int *count)
 	int i = 0;
 	long carry = 0;
 
+	if (digit == NULL)
+		exit (84);
 	while (nbr != 0) {
 		carry =  nbr % base;
 		nbr = nbr / base;

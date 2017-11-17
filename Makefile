@@ -9,8 +9,6 @@ CC	=	gcc
 
 CFLAGS	=	-W -Wall -Werror -Wextra -I include/
 
-LIB	=	-L. -lmy
-
 SRC 	=	my_printf.c				\
 		flags/flags.c				\
 		specifiers/specifiers_defaults.c	\
@@ -34,9 +32,6 @@ all:	$(NAME)
 $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	rm -f $(OBJ)
-
-main:
-	gcc tests/main_test.c $(CFLAGS) $(LIB)
 
 clean:
 	rm -f $(OBJ)
