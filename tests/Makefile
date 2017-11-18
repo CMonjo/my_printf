@@ -7,11 +7,11 @@
 
 CC	=	gcc
 
-CFLAGS	=	-Wall -Wextra -W -Werror -pedantic -I ../include/
+CFLAGS	=	-Wall -Wextra -W -Werror -I ../include/
 
 LIB	=	-L ../ -lmy
 
-CRIT	=	-lcriterion
+CRIT	=	-lcriterion -lgcov
 
 SRC	=	criterion.c	\
 		criterion_2.c	\
@@ -22,7 +22,7 @@ SRC	=	criterion.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
-NAME	=	tests
+NAME	=	units
 
 all: $(NAME)
 
