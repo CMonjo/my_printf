@@ -11,7 +11,7 @@ CFLAGS	=	-Wall -Wextra -W -Werror -I ../include/
 
 LIB	=	-L ../ -lmy
 
-CRIT	=	-lcriterion -lgcov
+CRIT	=	-lcriterion
 
 SRC	=	criterion.c	\
 		criterion_2.c	\
